@@ -23,8 +23,26 @@
 
     <script>
         const video = document.getElementById('intro-video');
-        video.muted = true;
-        video.play().catch(() => {});
+        const playWithSoundFromButton = sessionStorage.getItem('playVideoWithSound') === '1';
+
+        if (playWithSoundFromButton) {
+            sessionStorage.removeItem('playVideoWithSound');
+        }
+
+        async function startVideo() {
+            if (playWithSoundFromButton) {
+                video.muted = false;
+                video.volume = 1;
+                try {
+                    await video.play();
+                    return;
+                } catch (error) {
+                }
+            }
+
+            video.muted = true;
+            video.play().catch(() => {});
+        }
 
         async function enableSoundOnFirstInteraction() {
             video.muted = false;
@@ -34,6 +52,8 @@
             } catch (error) {
             }
         }
+
+        startVideo();
 
         window.addEventListener('pointerdown', enableSoundOnFirstInteraction, { once: true });
         window.addEventListener('keydown', enableSoundOnFirstInteraction, { once: true });

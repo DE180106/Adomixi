@@ -15,8 +15,15 @@
 
     <main class="site-body landing-body">
         <p class="landing-text">Nhan nut ben duoi de vao trang video.</p>
-        <a class="start-button" href="in.html">Vao trang video</a>
+        <a id="start-video-button" class="start-button" href="in.html">Vao trang video</a>
     </main>
+
+    <script>
+        const startVideoButton = document.getElementById('start-video-button');
+        startVideoButton.addEventListener('click', () => {
+            sessionStorage.setItem('playVideoWithSound', '1');
+        });
+    </script>
 </body>
 
 </html>
