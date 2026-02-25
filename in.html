@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A ộ i i</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <h1>A ộ i i</h1>
+    </header>
+
+    <main class="site-body">
+        <video id="intro-video" autoplay muted playsinline controls>
+            <!-- Ban tu them duong dan video vao thuoc tinh src ben duoi -->
+            <source src="./Download.mp4" type="video/mp4">
+            Trinh duyet cua ban khong ho tro the video.
+        </video>
+    </main>
+
+    <script>
+        const video = document.getElementById('intro-video');
+        video.muted = true;
+        video.play().catch(() => {});
+
+        async function enableSoundOnFirstInteraction() {
+            video.muted = false;
+            video.volume = 1;
+            try {
+                await video.play();
+            } catch (error) {
+            }
+        }
+
+        window.addEventListener('pointerdown', enableSoundOnFirstInteraction, { once: true });
+        window.addEventListener('keydown', enableSoundOnFirstInteraction, { once: true });
+    </script>
+</body>
+
+</html>
