@@ -51,13 +51,11 @@ body {
     border-radius: 8px;
     text-decoration: none;
     color: #ffffff;
-    background: #2563eb;
+    background: black;
     font-weight: 600;
 }
 
-.start-button:hover {
-    background: #1d4ed8;
-}
+
 
 #intro-video {
     width: auto;
